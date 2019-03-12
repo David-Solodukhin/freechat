@@ -11,10 +11,10 @@ app.get('/', (req, res) => {
 
 
 var server = https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
+  key: fs.readFileSync('/etc/letsencrypt/live/reewith.me/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/reewith.me/cert.pem')
 }, app)
-.listen(4337, function () {
+.listen(443, function () {
   console.log('shitty https activated');
 })
 
@@ -44,6 +44,8 @@ var maxDist = 1;
      socket.on('send_msg', (data) => {
         if (socks[socket.id] === undefined) {
             console.log("old client tried to connect");
+	    //io.to(socket).emit('rec_msg', data);
+	socket.emit('refresh', 'test');
             return;
         }
 

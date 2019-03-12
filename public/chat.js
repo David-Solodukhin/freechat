@@ -1,5 +1,5 @@
 
-var socket = io.connect('https://128.61.15.221:4337', {secure: true}); 
+var socket = io.connect('https://reewith.me:443', {secure: true}); 
 
 
 navigator.geolocation.getCurrentPosition(send_loc);
@@ -17,6 +17,10 @@ $(document).keypress(function (e) {
                    document.getElementById('textbox').value = "";
                    $('.chat-thread').scrollTop($('.chat-thread').prop('scrollHeight'));
                 }
+});
+socket.on("refresh", (data)=>{
+    console.log(data);
+    location.reload();
 });
 
 socket.on("rec_msg", (data)=>{
