@@ -71,7 +71,7 @@ var maxDist = 1;
                 Math.pow(y2 - y1, 2) * 1.0); 
             console.log(dist);
 
-            if (dist <= 1) {
+            if (dist <= 0.099/*0.3/69.0*/) {
                 io.to(i).emit('rec_msg', data);
             }
 
